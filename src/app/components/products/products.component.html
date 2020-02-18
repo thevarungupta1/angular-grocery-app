@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <ul class="list-group" *ngFor="let subcat of subCategory">
+        <li class="list-group-item">{{ subcat.subName }}</li>
+      </ul>
+    </div>
+    <div class="col-lg-9">
+
+
+        <div class="row">
+            <div class="card" style="width: 16rem;"  *ngFor="let product of products">
+                <img src="{{ _image_url+product.image }}" class="card-img-top" width="120" height="200" alt="...">
+                <div class="card-body">
+                  <h5 class="card-text text-center">{{product.productName}}</h5>
+                  <h1>{{ product.mrp * 70 | currency: 'INR' }}</h1>
+                </div>
+              </div>
+           </div>
+
+    </div>
+  </div>
+</div>
