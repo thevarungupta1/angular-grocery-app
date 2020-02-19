@@ -1,19 +1,32 @@
+<br>
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <ul class="list-group" *ngFor="let subcat of subCategory">
-        <li class="list-group-item">{{ subcat.subName }}</li>
+      <h3>Sub Categories</h3>
+      <ul class="list-group" style="cursor:pointer;" *ngFor="let subcat of subCategory">
+        <li style="cursor:pointer;" (click)="onSelectSubCategory(subcat.subId)" class="list-group-item" style="font-size: 24px;">{{ subcat.subName }}</li>
       </ul>
     </div>
     <div class="col-lg-9">
 
 
         <div class="row">
-            <div class="card" style="width: 16rem;"  *ngFor="let product of products">
-                <img src="{{ _image_url+product.image }}" class="card-img-top" width="120" height="200" alt="...">
+            <div class="card text-center" style="width: 16rem; padding: 20px;"  *ngFor="let product of products">
+              <span class="badge-discount">
+                10%
+              </span>
+                <img src="{{ _image_url+product.image }}" class="card-img-top text-center" width="120" height="200" alt="...">
                 <div class="card-body">
-                  <h5 class="card-text text-center">{{product.productName}}</h5>
-                  <h1>{{ product.mrp * 70 | currency: 'INR' }}</h1>
+                  <h5 class="card-text">{{product.productName}}</h5>
+                  <div>
+                    <p style="font-size: 26px; font-weight: bold;">
+                      {{ product.price * 70 | currency: 'INR' }}
+                      <span style="text-decoration: line-through; font-size: 19px; font-weight: normal;">
+                        {{ product.mrp * 70 | currency: 'INR' }}</span>
+                      </p>
+                  </div>
+                  
+                  <button (click)="addToCart(product)" class="btn btn-primary">Add To Cart</button>
                 </div>
               </div>
            </div>
