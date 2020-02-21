@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="container">
+
+    <h1>Login</h1>
+
+    <form [formGroup]="userForm">
+
+        {{ userForm.value | json }}
+
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text"  class="form-control" formControlName="name">
+        </div>
+
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text"  class="form-control" formControlName="email">
+        </div>
+
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="text"  class="form-control" formControlName="password">
+        </div>
+
+    </form>
+
+
+</div>

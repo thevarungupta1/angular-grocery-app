@@ -1,0 +1,54 @@
+<h1>Reactive Form Demo</h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+
+{{ userForm.value | json }}
+
+<div class="form-group">
+    <label for="">Name</label>
+    <input type="text" formControlName="name" class="form-control"
+    [class.is-invalid]="userForm.get('name').invalid && userForm.get('name').touched">
+
+    <div *ngIf="userForm.get('name').invalid && userForm.get('name').touched">
+        <small class="text-danger" *ngIf="userForm.get('name').errors.required">This is require filed</small>
+        <small class="text-danger" *ngIf="userForm.get('name').errors.minlength">min length should be 3</small>
+        <small class="text-danger" *ngIf="userForm.get('name').errors.maxlength">min length should be 10</small>
+    </div>
+
+</div>
+<div class="form-group">
+    <label for="">Email</label>
+    <input type="text" formControlName="email" class="form-control"
+    [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched">
+    <small class="text-danger" [class.d-none]="userForm.get('email').valid || userForm.get('email').untouched" >This is require filed</small>
+</div>
+
+<input type="tel" name="" id="" class="form-control" formControlName="phone">
+<div *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched">
+    <small class="text-danger" *ngIf="userForm.get('phone').errors.required">This is require filed</small>
+    <small class="text-danger" *ngIf="userForm.get('phone').errors.pat--tern">Invalid</small>
+    
+</div>
+
+<input type="submit" [disabled]="!userForm.valid"  value="Submit" class="btn btn-primary">
+<!-- 
+<div formGroupName="address" >
+    <div class="form-group">
+        <label for="">House</label>
+        <input type="text" formControlName="house" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label for="">City</label>
+        <input type="text" formControlName="city" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Country</label>
+        <input type="text" formControlName="country" class="form-control">
+    </div>
+</div> -->
+
+
+<button (click)="loadData()" class="btn btn-warning">Load Data</button>
+
+</form>
